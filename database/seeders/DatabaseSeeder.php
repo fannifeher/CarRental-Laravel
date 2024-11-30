@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Customer;
+use App\Models\Reservation;
+use App\Models\Car;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,11 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $customers = Customer::factory(5)->create();
+        $cars = Car::factory(5)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        foreach ($cars as $car) {
+            Reservation::factory(1)->create()->each(function ($reservation) use ($customers, $car) {
+                $reservation->customer()->associate($customers->random())->save();
+                $reservation->car()->associate($car)->save();
+            });
+        }
     }
 }
