@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $customers = Customer::factory(5)->create();
-        $cars = Car::factory(5)->create();
+        $cars = Car::factory(10)->create();
 
         foreach ($cars as $car) {
             Reservation::factory(1)->create()->each(function ($reservation) use ($customers, $car) {

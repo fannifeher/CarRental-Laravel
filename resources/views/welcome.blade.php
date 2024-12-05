@@ -12,7 +12,7 @@
                             </div>
                         @endif
                         @if (Session::has('error'))
-                            <div class="alert alert-success">
+                            <div class="alert alert-danger">
                                 Failed reservation! Please try again!
                             </div>
                         @endif
@@ -45,7 +45,7 @@
                             @foreach ($cars as $car)
                                 <div class="col-md-6 col-sm-12 col-lg-4">
                                     <div class="card" style="width: 100%; display: flex; flex-direction: column; height: 100%;" >
-                                        <img class="card-img-top"  src="{{ isset($car['cover_image_path']) ? $car['cover_image_path'] : asset('images/default.jpg') }}"  >
+                                        <img class="card-img-top"  src="{{ isset($car['cover_image_path']) ? asset('storage/'.$car["cover_image_path"]) : asset('images/default.jpg') }}">
                                         <div class="card-body">
                                         <h5 class="card-title">{{$car->name}}</h5>
                                         <p class="card-text">{{$car->description}}</p>

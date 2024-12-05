@@ -7,7 +7,7 @@
         <div class="container d-flex justify-content-center">
             <div class="col-md-6 col-sm-12 col-lg-3">
                 <div class="card center " style="width: 100%;" >
-                    <img class="card-img-top"  src="{{ isset($car['cover_image_path']) ? $car['cover_image_path'] : asset('images/default.jpg') }}"  >
+                    <img class="card-img-top"  src={{ isset($car['cover_image_path']) ? asset('storage/'.$car["cover_image_path"]) : asset('images/default.jpg') }}  >
                     <div class="card-body">
                     <h5 class="card-title">{{$car->name}}</h5>
                     <p class="card-text">{{$car->description}}</p>

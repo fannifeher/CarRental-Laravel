@@ -18,7 +18,7 @@ class ReservationFactory extends Factory
     public function definition(): array
     {
         $numOfDays = fake()->numberBetween(0, 25);
-        $start = fake()->dateTimeBetween('-3 month', '+3 month');
+        $start = fake()->dateTimeBetween('-1 day ','+3 month');
         $end = Carbon::instance($start)->addDays($numOfDays);
         return [
             'start' => $start,
