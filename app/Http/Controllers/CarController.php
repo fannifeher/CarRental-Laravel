@@ -13,7 +13,7 @@ class CarController extends Controller
 {
     public function index()
     {
-        return view('admin..car.cars', [
+        return view('admin.car.cars', [
             'cars' => Car::All(),
         ]);
     }

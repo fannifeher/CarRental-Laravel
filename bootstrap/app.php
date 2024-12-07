@@ -10,6 +10,15 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
+    ->withMiddleware(function ($middleware) {
+        $middleware->validateCsrfTokens(except: [
+            '/cars',
+            '/admin/cars',
+            '/admin/reservations'
+            
+        ]);
+    })
+
     ->withMiddleware(function (Middleware $middleware) {
         //
     })
