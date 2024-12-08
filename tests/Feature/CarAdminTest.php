@@ -39,9 +39,7 @@ class CarAdminTest extends TestCase
 
     public function test_admin_store_car(): void
     {
-        $this->withoutMiddleware();
         $response = $this->post(route('cars.store'), [
-            '_token' => csrf_token(),
             'name' => '',
             'cover_image' => null,
             'dailyPrice' => '']);

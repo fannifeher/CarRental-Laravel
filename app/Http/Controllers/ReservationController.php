@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
@@ -18,9 +19,13 @@ class ReservationController extends Controller
 
     public function edit(Reservation $reservation)
     {
+        $start = Carbon::parse($reservation->start)->format('Y-m-d');
+        $end = Carbon::parse($reservation->end)->format('Y-m-d');
         return view('admin.reservation.edit', [
             "reservation" => $reservation,
-            "cars" => Car::All()
+            "cars" => Car::All(),
+            "previousStart" => $start,
+            "previousEnd" => $end
         ]);
     }
 
@@ -70,5 +75,6 @@ class ReservationController extends Controller
     {
         $reservation->delete();
         return redirect()->route('reservations.index');
+        Session::flash('deleted');
     }
 }

@@ -49,7 +49,7 @@ class CarController extends Controller
         ]);
         Session::flash('car_created');
     
-        return redirect()->route('cars.create');
+        return redirect()->route('cars.index');
     }
 
 

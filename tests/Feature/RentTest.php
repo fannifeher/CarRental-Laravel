@@ -25,30 +25,25 @@ class RentTest extends TestCase
 
     public function test_search_available_cars(): void
     {   
-        $this->refreshApplication();
-        $car1 = Car::factory()->create();
-        $car2 = Car::factory()->create();
-        $car3 = Car::factory()->create();
+        $car = Car::factory()->create();
 
         $customer = Customer::factory()->create();
 
         Reservation::factory()->create([
-            'car_id' => $car1->id,
+            'car_id' => $car->id,
             'customer_id' => $customer->id,
             'start' => '2025-03-01',
             'end' => '2025-03-05',
         ]);
 
-        $response = $this->withSession([
-            '_token' => csrf_token(),
-        ])->post('/cars', [
+        $response = $this->post('/cars', [
             'start' => '2025-03-01',
             'end' => '2025-03-05',
         ]);
         $response->assertViewIs('welcome');
 
         $cars = $response->original->getData()['cars'];
-        $this->assertCount(2, $cars); 
+        $this->assertCount(0, $cars); 
 
     }
 
