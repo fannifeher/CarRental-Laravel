@@ -64,3 +64,8 @@
 ```bash
    php artisan serve
 ```
+
+**Tesztelés**
+```bash
+   php artisan test
+```
