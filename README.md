@@ -1,4 +1,3 @@
-
 ## Technológiák
 - **Backend**: PHP, Laravel
 - **Frontend**: HTML, Bootstrap, Blade
@@ -64,4 +63,4 @@
 **Alkalmazás indítása**
 ```bash
    php artisan serve
-```
+
